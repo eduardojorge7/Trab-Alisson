@@ -21,16 +21,12 @@
                 </ul>
             </nav>
         </div>
-        
         <div id="page-info">
             <div id="creation-group">
-                <span id="txt-creation">New group</span>
-            </div>
-            <div id="creation-group-button">
                 <button type="button" id="plus-button">
-                    <ion-icon name="add-circle-outline"></ion-icon>
-                </button>
-            </div>
+                    <span id="txt-creation">New group</span>
+                </button>            
+            </div>    
         </div>
 
 
@@ -164,6 +160,19 @@
         <%}%>
     </div>
 
+    <div class="popup">
+        <div class="close-button">&times;</div>
+        <form action="/criar" method="post" class="form">
+            <h2>Create group</h2>
+            <div class="form-element">
+                <input type="text" id="group-name" placeholder=" " name="nomeGrupo" required>
+                <label for="group-name">Name</label>
+            </div>
+            <div class="form-button">
+                <button type="submit">Create!</button>
+            </div>
+        </form>
+    </div>
 
         <script>
             const gap = 50;

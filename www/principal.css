@@ -142,9 +142,6 @@ nav a:hover {
 }
 
 
-ion-icon {
-    font-size: 300%;
-}
 
 
 .popup {
@@ -296,12 +293,13 @@ input {
     padding: 10px;
     padding-top: 20px;
     border-radius: 8px;
+
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
     background: rgba(255, 255, 255, 0.15);
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.075); 
 }
 
 .section-name {
@@ -330,8 +328,15 @@ margin-right: 35px;
 display: flex;
 justify-content: center;
 align-content: center;
-background: white;
-border: none;
+
+box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+
+background: rgba(255, 255, 255, 0.15);
+-webkit-backdrop-filter: blur(18px);
+backdrop-filter: blur(18px);
+border: 1px solid rgba(255, 255, 255, 0.075);  
+
+border: 1px solid #282828;
 padding: 8px;
 border-radius: 50%;
 outline: 0;
@@ -378,7 +383,7 @@ box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
 background: rgba(255, 255, 255, 0.15);
 -webkit-backdrop-filter: blur(18px);
-backdrop-filter: blur(18px);
+/*backdrop-filter: blur(18px);*/
 border: 1px solid rgba(255, 255, 255, 0.075);
 
 }
