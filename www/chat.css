@@ -119,6 +119,13 @@ nav li {
     width: 10%;
 }
 
+#campo-msg {
+    display: block;
+    border: 4px solid yellow; 
+    width: 100%;
+    height: 80%;                        /*arrumar heigth*/
+}
+
 #container-bottom-itens {
     display: flex;
     justify-content: center;

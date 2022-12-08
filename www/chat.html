@@ -32,8 +32,9 @@
                     </div>
                 </div>
 
+                
                 <div id="campo-msg">
-                    <ul></ul>
+                    <ul id="ul_mensagem"></ul>
                 </div>
 
                 <div id="container-bottom-itens">
@@ -57,6 +58,33 @@
             function returnButton(){
                 window.history.back();
             }
+        </script>
+        
+        <!--Script web sokcet-->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            
+            let socket = io();
+            let mensagem = document.getElementById('mensagem');
+            let btn_send = document.getElementById('send-button');
+            let div_msgs = document.getElementById('ul_mensagem');
+
+            btn_send.addEventListener("click", function(e){
+                e.preventDefault();
+                if(mensagem.value){
+                    socket.emit("chat_msg", mensagem.value);
+                    mensagem.value = '';
+                }
+            });
+
+            socket.on('chat_msg', function(msg){
+                let item = document.createElement('li');
+                item.textContent = msg;
+                div_msgs.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            })
+
+
         </script>
     </body>
 </html>

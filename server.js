@@ -5,6 +5,7 @@ const app = express();
 const db = require('./models/db'); //importando o arquivo db.js
 const Usuario = require('./models/Usuario');  //Importando o arquivo Ususario.js
 const Grupo = require('./models/Grupo');
+const Mensagem = require('./models/Mensagem');
 const { json } = require("body-parser");
 const path = require('path');
 const session = require('express-session');
@@ -73,8 +74,11 @@ app.post('/logar',  async (req, res) => {  /* redireciona para a pagina main */
 
 //Web Socket
 io.on('connection', (socket) => {
-    console.log("Entrou!");
-})
+    console.log('connected');
+    socket.on('chat_msg', (msg) => {
+        io.emit('chat_msg', msg);
+    });
+});
 
 app.get('/main', async (req, res) => {
     if (req.session.usuario === null) {
@@ -115,7 +119,7 @@ app.get("/profile", async (req, res) => {
 
 app.get('/chat', (req, res) => {
     res.redirect('chat.html');
-})
+});
 
 
     //Destroy session
