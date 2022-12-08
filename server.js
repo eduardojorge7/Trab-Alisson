@@ -39,22 +39,24 @@ app.use(session({
 
 //Rotas
     //Cadastro
-app.post('/cadastrar', async (req, res) => {
-    const usuario = await Usuario.create({
-        nome_completo: req.body.fullname,
-        username: req.body.username,
-        email: req.body.email,
-        senha: req.body.password
-    });
-    const usuarioBanco = await Usuario.findOne({where: {username: req.body.username, senha: req.body.password}});
-    if(!usuarioBanco){
-        req.session.usuario = usuario;
-        res.redirect('main');
-    }else{
-        console.log("usuario ja cadastrado");
-        res.redirect('cadastrar.html');
-    }
-})
+    app.post('/cadastrar', async (req, res) => {
+        const userBanco = await Usuario.findOne({where: {username: req.body.username}});
+        const emailBanco = await Usuario.findOne({where: {email: req.body.email}});
+        if((!userBanco) && (!emailBanco)){
+            const usuario = await Usuario.create({
+                nome_completo: req.body.fullname,
+                username: req.body.username,
+                email: req.body.email,
+                senha: req.body.password
+            });    
+        
+            req.session.usuario = usuario;
+            res.redirect('main');
+        }else{
+            console.log("usuario ja cadastrado");
+            res.redirect('cadastrar.html');
+        }
+    })
 
     //Login na plataforma
 app.post('/logar',  async (req, res) => {  /* redireciona para a pagina main */
