@@ -85,21 +85,23 @@
     <div class="section">
         <span class="section-name">Popular groups</span>
     
-
+        
         <%if(total){%>
             <div id="wrapper">
                 <div id="carousel">
                     <div id="content">
                         <% for (let i=0; i < total; i++) { %>
-                            <div class="item">
-                                <img class="card-img" src="/imagens/grupo.png" alt="1" />
-                                <h1 class="card-span">
-                                    <span><%= nome[i] %></span>
-                                </h1>
-                                <div class="card-button">
-                                    <button type="submit" class="join-button">Join!</button>
+                            <form action= <%= nome[i] %> method="post">
+                                <div class="item">
+                                    <img class="card-img" src="/imagens/grupo.png" alt="1" />
+                                    <h1 class="card-span">
+                                        <span><%= nome[i] %></span>
+                                    </h1>
+                                    <div class="card-button">                                        
+                                        <button type="submit" class="join-button">Join!</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         <% } %>
                     </div>
                 </div>

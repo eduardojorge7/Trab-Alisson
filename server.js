@@ -54,7 +54,8 @@ app.use(session({
             res.redirect('main');
         }else{
             console.log("usuario ja cadastrado");
-            res.redirect('cadastrar.html');
+            res.redirect('cadastrar.html');            
+            res.send("teste");
         }
     })
 
@@ -81,8 +82,8 @@ app.get('/main', async (req, res) => {
     if (req.session.usuario === null) {
         res.redirect('index.html');
     } else {
-        const [tamanho, nome] = await buscaGrupos();
-        res.render('main', {total: tamanho, nome: nome});
+        const [tamanho, nome, id] = await buscaGrupos();
+        res.render('main', {total: tamanho, nome: nome, id: id});
         console.log(req.session.usuario);
     }
 });
@@ -143,10 +144,12 @@ async function buscaGrupos(){
     strGrupos = JSON.stringify(grupos);
     let jsonGrupos = JSON.parse(strGrupos);
     let nomes = [];
+    let ids = [];
 
     for (let i = 0; i < jsonGrupos.length; i++){
         nomes.push(jsonGrupos[i].nome_grupo);
+        ids.push(jsonGrupos[i].id_grupo);
     }
 
-    return [jsonGrupos.length, nomes];
+    return [jsonGrupos.length, nomes, ids];
 }
