@@ -51,11 +51,11 @@ app.post('/cadastrar', async (req, res) => {
         senha: req.body.password
     });
     const usuarioBanco = await Usuario.findOne({where: {username: req.body.username, senha: req.body.password}});
-    if(usuario =! usuarioBanco){
+    if(!usuarioBanco){
         req.session.usuario = usuario;
         res.redirect('main');
     }else{
-        prompt('Erro ao cadastrar!');
+        prompt('Erro ao cadastrar! Usuário já existe!');
         res.redirect('cadastrar.html');
     }
 })
