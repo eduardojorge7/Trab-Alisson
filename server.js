@@ -40,7 +40,6 @@ app.use(session({
 
 
 
-
 //Rotas
     //Cadastro
     app.post('/cadastrar', async (req, res) => {
