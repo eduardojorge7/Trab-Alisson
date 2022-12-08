@@ -51,8 +51,13 @@ app.post('/cadastrar', async (req, res) => {
         email: req.body.email,
         senha: req.body.password
     });
-    const usuarioBanco = await Usuario.findOne({where: {username: req.body.username, senha: req.body.password}});
-    if(!usuarioBanco){
+    const nomeBanco = await Usuario.findOne({where: {nome_completo: req.body.fullname}});
+    const userBanco = await Usuario.findOne({where: {username: req.body.username}});
+    const emailBanco = await Usuario.findOne({where: {email: req.body.email}});
+    console.log(nomeBanco);
+    console.log(userBanco);
+    console.log(emailBanco);
+    if(!nomeBanco && !userBanco && !emailBanco){
         req.session.usuario = usuario;
         res.redirect('main');
     }else{
