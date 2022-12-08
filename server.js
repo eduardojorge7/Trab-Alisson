@@ -140,6 +140,7 @@ server.listen(3000, ()=>{
 
 
 
+
 //Funções 
 async function buscaGrupos(){
     const grupos = await Grupo.findAll();
