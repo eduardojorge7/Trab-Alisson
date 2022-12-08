@@ -89,6 +89,13 @@ app.get('/main', async (req, res) => {
 });
 
 
+app.post("/grupo", (req, res)=>{
+    const id = req.body.id
+    const nome = req.body.nome
+    console.log(id, nome);
+});
+
+
     //Criação de grupos
 app.post("/criar", (req, res) => {     //cria um novo grupo
     Grupo.create({
