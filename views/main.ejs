@@ -15,9 +15,9 @@
             <img src="/imagens/tucanoHeader.png" id="tucano-img">
             <nav>
                 <ul>
-                    <li><a href="/main">Home</a></li>
+                    <li><a href="main">Home</a></li>
                     <li><a href="/chat">My groups</a></li>
-                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="profile">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -164,7 +164,7 @@
         <form action="/criar" method="post" class="form">
             <h2>Create group</h2>
             <div class="form-element">
-                <input type="text" id="group-name" placeholder=" " name="nomeGrupo" required>
+                <input type="text" id="group-name" placeholder=" " name="nomeGrupo" maxlength="20" required>
                 <label for="group-name">Name</label>
             </div>
             <div class="form-button">
