@@ -56,7 +56,6 @@ app.post('/cadastrar', async (req, res) => {
         req.session.usuario = usuario;
         res.redirect('main');
     }else{
-        prompt('Erro ao cadastrar! Usuário já existe!');
         res.redirect('cadastrar.html');
     }
 })
