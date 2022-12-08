@@ -75,8 +75,11 @@ app.post('/logar',  async (req, res) => {  /* redireciona para a pagina main */
 
 //Web Socket
 io.on('connection', (socket) => {
-    console.log("Entrou!");
-})
+    console.log('connected');
+    socket.on('chat_msg', (msg) => {
+        io.emit('chat_msg', msg);
+    });
+});
 
 app.get('/main', async (req, res) => {
     if (req.session.usuario === null) {
@@ -88,6 +91,11 @@ app.get('/main', async (req, res) => {
     }
 });
 
+app.post("/grupo", (req, res)=>{
+    const id = req.body.id
+    const nome = req.body.nome
+    console.log(id, nome);
+});
 
     //Criação de grupos
 app.post("/criar", (req, res) => {     //cria um novo grupo
