@@ -50,7 +50,8 @@ app.post('/cadastrar', async (req, res) => {
         email: req.body.email,
         senha: req.body.password
     });
-    if(usuario){
+    const usuarioBanco = await Usuario.findOne({where: {username: req.body.username, senha: req.body.password}});
+    if(usuario =! usuarioBanco){
         req.session.usuario = usuario;
         res.redirect('main');
     }else{
