@@ -89,8 +89,6 @@ app.get('/main', async (req, res) => {
 });
 
 
-
-
     //Criação de grupos
 app.post("/criar", (req, res) => {     //cria um novo grupo
     Grupo.create({
